@@ -1,3 +1,10 @@
+// I exceeded the requirements by adding more providing more prompts to the user so they can feel more comfortable to write something 
+// in their journal.
+// Also I was able to save the journal in another file.
+
+
+
+
 class Program
 {
     static void Main(string[] args)
