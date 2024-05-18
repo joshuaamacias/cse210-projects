@@ -1,46 +1,56 @@
-using System;
-
 class Program
 {
     static void Main(string[] args)
     {
-        // Create a PromptGenerator
-        PromptGenerator promptGenerator = new PromptGenerator();
-
-        // Generate a prompt
-        string prompt = promptGenerator.GeneratePrompt();
-
-        // Display the prompt
-        Console.WriteLine("Prompt: " + prompt);
-
-        // Create a new journal
         Journal journal = new Journal();
+        int choice;
 
-        // Create a new entry
-        Entry entry1 = new Entry
+        do
         {
-            Date = DateTime.Now,
-            Content = "Today was a good day."
-        };
+            Console.WriteLine("Journal Program Menu:");
+            Console.WriteLine("1. Write a new entry");
+            Console.WriteLine("2. Display the journal");
+            Console.WriteLine("3. Save the journal to a file");
+            Console.WriteLine("4. Load the journal from a file");
+            Console.WriteLine("5. Exit");
+            Console.Write("Enter your choice: ");
+            choice = int.Parse(Console.ReadLine());
 
-        // Add the entry to the journal
-        journal.AddEntry(entry1);
-
-        // Create another entry
-        Entry entry2 = new Entry
-        {
-            Date = DateTime.Now.AddDays(-1),
-            Content = "Yesterday was rainy."
-        };
-
-        // Add the entry to the journal
-        journal.AddEntry(entry2);
-
-        // Display all entries in the journal
-        Console.WriteLine("\nEntries in the journal:");
-        foreach (Entry entry in journal.GetEntries())
-        {
-            Console.WriteLine($"Date: {entry.Date}, Content: {entry.Content}");
-        }
+            switch (choice)
+            {
+                case 1:
+                    Console.Write("Enter your response to today's prompt: ");
+                    string response = Console.ReadLine();
+                    string[] prompts = { "Who was the most interesting person I interacted with today?",
+                                         "What was the best part of my day?",
+                                         "How did I see the hand of the Lord in my life today?",
+                                         "What was the strongest emotion I felt today?",
+                                         "If I had one thing I could do over today, what would it be?",
+                                         "What is something that you improved from yesterday?",
+                                         "Were you able to do some good today? to whom and why?" };
+                    string prompt = prompts[new Random().Next(prompts.Length)];
+                    journal.AddEntry(prompt, response);
+                    break;
+                case 2:
+                    journal.DisplayJournal();
+                    break;
+                case 3:
+                    Console.Write("Enter the filename to save: ");
+                    string saveFilename = Console.ReadLine();
+                    journal.SaveToFile(saveFilename);
+                    break;
+                case 4:
+                    Console.Write("Enter the filename to load: ");
+                    string loadFilename = Console.ReadLine();
+                    journal.LoadFromFile(loadFilename);
+                    break;
+                case 5:
+                    Console.WriteLine("Exiting...");
+                    break;
+                default:
+                    Console.WriteLine("Invalid choice. Please enter a number between 1 and 5.");
+                    break;
+            }
+        } while (choice != 5);
     }
 }
