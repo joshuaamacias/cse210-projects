@@ -2,9 +2,7 @@
 // in their journal.
 // Also I was able to save the journal in another file.
 
-
-
-
+using System;
 class Program
 {
     static void Main(string[] args)
@@ -26,8 +24,7 @@ class Program
             switch (choice)
             {
                 case 1:
-                    Console.Write("Enter your response to today's prompt: ");
-                    string response = Console.ReadLine();
+                    Console.WriteLine("Enter your response to today's prompt: ");
                     string[] prompts = { "Who was the most interesting person I interacted with today?",
                                          "What was the best part of my day?",
                                          "How did I see the hand of the Lord in my life today?",
@@ -35,7 +32,11 @@ class Program
                                          "If I had one thing I could do over today, what would it be?",
                                          "What is something that you improved from yesterday?",
                                          "Were you able to do some good today? to whom and why?" };
+                    
+                    
                     string prompt = prompts[new Random().Next(prompts.Length)];
+                    Console.WriteLine($"Today's prompt: {prompt}");
+                    string response = Console.ReadLine();
                     journal.AddEntry(prompt, response);
                     break;
                 case 2:
