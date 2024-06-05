@@ -6,6 +6,8 @@ class Program
         // Create a reference to the scripture
         Reference reference = new Reference("Proverbs", 3, 5, 6);
 
+       
+
         // The text of the scripture
         string text = "Trust in the LORD with all thine heart; and lean not unto thine own understanding. In all thy ways acknowledge him, and he shall direct thy paths.";
 
@@ -30,13 +32,13 @@ class Program
     private Scripture _scripture;
 
     // Constructor to initialize the Program with a Scripture object
-    public Program(Scripture scripture)
+    private Program(Scripture scripture)
     {
         _scripture = scripture;
     }
 
     // Run method that accepts the number of words to hide each time
-    public void Run(int wordsToHide)
+    private void Run(int wordsToHide)
     {
         // Clear the console and display the scripture
         ClearConsole();

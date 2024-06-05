@@ -1,7 +1,7 @@
 class Scripture
 {
-    public Reference Reference { get; private set; }
-    public List<Word> Words { get; private set; }
+    private Reference Reference ;
+    private List<Word> Words ;
 
     // Constructor to initialize the Scripture with its reference and text
     public Scripture(Reference reference, string text)
@@ -14,7 +14,7 @@ class Scripture
     public void HideRandomWords(int count = 1)
     {
         Random random = new Random();
-        var wordsToHide = Words.Where(word => !word.Hidden).ToList();
+        var wordsToHide = Words.Where(word => !word.IsHidden()).ToList();
 
         for (int i = 0; i < count; i++)
         {
@@ -26,11 +26,11 @@ class Scripture
             }
         }
     }
-
+ 
     // Method to check if all words are hidden
     public bool AllWordsHidden()
     {
-        return Words.All(word => word.Hidden);
+        return Words.All(word => word.IsHidden());
     }
 
     // Override ToString to display the scripture text with hidden words as underscores

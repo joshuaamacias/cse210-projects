@@ -1,7 +1,7 @@
 class Word
 {
-    public string Text { get; private set; }
-    public bool Hidden { get; private set; }
+    private string Text ;
+    private bool Hidden ;
 
     // Constructor to initialize the Word with its text
     public Word(string text)
@@ -20,5 +20,10 @@ class Word
     public override string ToString()
     {
         return Hidden ? "_____" : Text;
+    }
+
+    public bool IsHidden()
+    {
+        return Hidden;
     }
 }
