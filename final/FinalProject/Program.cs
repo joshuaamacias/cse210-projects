@@ -14,10 +14,10 @@ class Program
 
         Admin admin = new Admin("admin", "password");
         // Existing customer for demonstration
-        if (!bank.UsernameExists("john_doe"))
+        if (!bank.UsernameExists("secureadmin"))
         {
             Account existingAccount = new Account(12345, 500.00m);
-            Customer existingCustomer = new Customer("John Doe", "john_doe", "securepassword", existingAccount);
+            Customer existingCustomer = new Customer("admin", "secureadmin", "securepassword", existingAccount);
             bank.AddCustomer(existingCustomer);
             bank.AddAccount(existingAccount);
         }
@@ -59,6 +59,7 @@ class Program
 
     static Customer HandleLogin(Bank bank)
     {
+        Console.Clear();
         Console.Write("Enter username: ");
         string username = Console.ReadLine();
         Console.Write("Enter password: ");
@@ -79,6 +80,7 @@ class Program
 
     static void HandleSignUp(Bank bank)
     {
+        Console.Clear();
         Console.Write("Enter your name: ");
         string name = Console.ReadLine();
         string username;
@@ -108,6 +110,7 @@ class Program
         bool exit = false;
         while (!exit)
         {
+            Console.Clear();
             Console.WriteLine("Welcome to the ATM");
             Console.WriteLine("1. Deposit Money");
             Console.WriteLine("2. Withdraw Money");
